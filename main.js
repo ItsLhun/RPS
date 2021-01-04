@@ -1,10 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let gamesPlayed = 0;
-console.log("something");
 
-console.log(computerPlay());
-//console.log(playerPlay());
 play(computerPlay());
 
 function computerPlay() {
