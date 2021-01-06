@@ -119,12 +119,14 @@ body main div div {
 }
 
 .gameContent {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 60vh;
+  min-height: 300px;
   background: white;
 }
 
 .buttonHold {
+  padding-top: 10px;
   background: transparent;
 }
 
@@ -141,9 +143,6 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  background: linear-gradient(63deg, #773d2b 23%, transparent 53%) 7px 0, linear-gradient(63deg, transparent 74%, #49332a 78%), linear-gradient(63deg, transparent 34%, #353317 38%, #493e3e 58%, transparent 62%), #2c1212;
-  background-size: 5px 5px;
-  border-top: 10px 10px green;
 }
 
 footer p {
@@ -161,17 +160,26 @@ footer p {
   display: flex;
 }
 
-footer p img {
-  padding: 0;
-  fill: yellowgreen;
-  stroke: yellowgreen;
+footer p a svg {
+  background: transparent;
+  background-color: transparent;
+  fill: transparent;
+  stroke: gold;
   -webkit-transform: scale(2);
           transform: scale(2);
 }
 
-footer p img:hover {
-  fill: yellowgreen;
-  stroke: yellowgreen;
+footer p a svg:hover {
+  fill: firebrick;
+  stroke: gold;
+}
+
+.buttonHover:hover {
+  background: transparent;
+  background-color: transparent;
+  fill: transparent;
+  stroke: red;
+  stroke-width: 10px;
 }
 
 button {
@@ -200,6 +208,7 @@ button img:hover {
   }
 }
 
+/* THIS PART IS ANIMATION FOR THE FIRE */
 .container {
   margin: 40px auto;
   width: 30vmin;
@@ -334,6 +343,32 @@ button img:hover {
   100% {
     -webkit-transform: rotate(1deg);
             transform: rotate(1deg);
+  }
+}
+
+/* THIS PART IS ANIMATION FOR THE ARROW */
+#arrowLeft {
+  scale: 0.3;
+  background: transparent;
+  bottom: 15%;
+  position: absolute;
+  rotate: -90deg;
+  -webkit-animation: linear;
+  -webkit-animation-name: run;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes run {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    right: 0;
   }
 }
 /*# sourceMappingURL=style.css.map */
