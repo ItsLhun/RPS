@@ -1,6 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let gamesPlayed = 0;
+const numberOfRounds = 5;
 
 play(computerPlay());
 
@@ -14,7 +15,7 @@ function playerPlay() {
 }
 
 function play(computerPlay) {
-  while (gamesPlayed < 5) {
+  while (gamesPlayed < numberOfRounds) {
     let playerPlayed = playerPlay();
     if (playerPlayed === computerPlay) {
       console.log("It's a tie!");

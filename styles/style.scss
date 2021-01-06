@@ -1,0 +1,91 @@
+$backgroundColor: rgba(69, 66, 73, 1);
+$mainFontColor: rgb(228, 225, 222);
+
+@mixin starryNight {
+  background-color: black;
+  background-image: radial-gradient(
+      rgb(240, 247, 149),
+      rgba(255, 255, 255, 0.2) 2px,
+      transparent 40px
+    ),
+    radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
+    radial-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 30px
+    );
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  min-height: 0px;
+}
+
+header {
+  color: $mainFontColor;
+  @include starryNight();
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: $backgroundColor;
+  main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @include starryNight();
+    div {
+      div {
+        background-color: $mainFontColor;
+      }
+    }
+  }
+}
+
+.gameContent {
+  width: 500px;
+  height: 500px;
+  background: white;
+}
+.buttonHold {
+}
+
+footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(63deg, rgb(119, 61, 43) 23%, transparent 53%) 7px
+      0,
+    linear-gradient(63deg, transparent 74%, rgb(73, 51, 42) 78%),
+    linear-gradient(
+      63deg,
+      transparent 34%,
+      rgb(53, 51, 23) 38%,
+      rgb(73, 62, 62) 58%,
+      transparent 62%
+    ),
+    rgb(44, 18, 18);
+  background-size: 5px 5px;
+  border-top: 10px 10px green;
+}
+
+button {
+  width: 15vw;
+  max-width: 150px;
+  :hover {
+    background-color: green;
+  }
+  img {
+    transform: scale(1);
+  }
+}
