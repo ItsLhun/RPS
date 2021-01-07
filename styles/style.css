@@ -234,6 +234,10 @@ button {
           box-shadow: thistle;
 }
 
+button:focus {
+  outline: none;
+}
+
 @media (max-width: 768px) {
   div .flame {
     -webkit-transform: rotate(-45deg) scale(1, 1);

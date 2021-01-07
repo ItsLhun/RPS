@@ -170,6 +170,9 @@ button {
   background: transparent;
   border: 0;
   box-shadow: thistle;
+  &:focus {
+    outline: none;
+  }
 }
 
 @include media("<=phone") {
