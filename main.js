@@ -1,62 +1,84 @@
 let playerScore = 0;
 let computerScore = 0;
 let gamesPlayed = 0;
-let numberOfRounds = 1;
-
-//play(computerPlay());
+let numberOfRounds = 3;
+let playing = false;
 
 const playerScoreDisplay = document.querySelector("#playerScore");
-playerScoreDisplay.textContent = playerScore;
 
 const computerScoreDisplay = document.querySelector("#computerScore");
-computerScoreDisplay.textContent = computerScore;
 
-const resetButton = document.querySelector("reset");
-resetButton.addEventListener("click", reset());
+const resetButton = document.querySelector(".reset");
+resetButton.addEventListener("click", (event) => {
+  reset();
+});
 
 const shieldButton = document.querySelector("#shieldButton");
+shieldButton.addEventListener("click", (event) => {
+  play(computerPlay(), "Shield");
+});
+
 const swordButton = document.querySelector("#swordButton");
+swordButton.addEventListener("click", (event) => {
+  play(computerPlay(), "Sword");
+});
+
 const bowButton = document.querySelector("#bowButton");
+bowButton.addEventListener("click", (event) => {
+  play(computerPlay(), "Bow");
+});
 
 function computerPlay() {
-  let options = ["Rock", "Paper", "Scissors"];
+  let options = ["Shield", "Sword", "Bow"];
   return options[randomNum(0, options.length - 1)];
 }
-function playerPlay() {
-  let played = prompt("Input your play!", "");
-  return normalizeString(played);
-}
 
-function play(computerPlay) {
-  while (gamesPlayed < numberOfRounds) {
-    let playerPlayed = playerPlay();
-    if (playerPlayed === computerPlay) {
-      console.log("It's a tie!");
-    } else if (
-      (playerPlayed === "Rock" && computerPlay === "Scissors") ||
-      (playerPlayed === "Paper" && computerPlay === "Rock") ||
-      (playerPlayed === "Scissors" && computerPlay === "Paper")
-    ) {
-      console.log("You win! " + playerPlayed + " beats " + computerPlay + "!");
-      playerScore++;
-      gamesPlayed++;
-    } else {
-      console.log("You lose! " + computerPlay + " beats " + playerPlayed + "!");
-      computerScore++;
-      gamesPlayed++;
-    }
-  }
-  console.log("And the final score is:");
-  if (playerScore === computerScore) {
-    console.log("Tie!");
-  } else if (playerScore > computerScore) {
-    console.log(
-      "You win! \n Player: " + playerScore + " Computer: " + computerScore
-    );
+function play(computerPlay, playerPlay) {
+  const playResult = document.querySelector("#playResult");
+  let playerPlayed = playerPlay;
+
+  if (playerPlayed === computerPlay) {
+    playResult.textContent = "It's a tie!";
+    console.log("It's a tie!");
+    updateScore();
+  } else if (
+    (playerPlayed === "Shield" && computerPlay === "Bow") ||
+    (playerPlayed === "Sword" && computerPlay === "Shield") ||
+    (playerPlayed === "Bow" && computerPlay === "Sword")
+  ) {
+    playResult.textContent =
+      "You win! " + playerPlayed + " beats " + computerPlay + "!";
+    console.log("You win! " + playerPlayed + " beats " + computerPlay + "!");
+    playerScore++;
+    gamesPlayed++;
+    updateScore();
   } else {
-    console.log(
-      "You lose! \n Player: " + playerScore + " Computer: " + computerScore
-    );
+    playResult.textContent =
+      "You lose! " + computerPlay + " beats " + playerPlayed + "!";
+    console.log("You lose! " + computerPlay + " beats " + playerPlayed + "!");
+    computerScore++;
+    gamesPlayed++;
+    updateScore();
+  }
+
+  if (gamesPlayed === numberOfRounds) {
+    console.log("And the final score is:");
+    if (playerScore === computerScore) {
+      console.log("Tie!");
+    } else if (playerScore > computerScore) {
+      playResult.textContent = "Congratulations, you Win!";
+      console.log(
+        "You win! \n Player: " + playerScore + " Computer: " + computerScore
+      );
+      disableButtons();
+    } else {
+      playResult.textContent = "Sorry, you Lose!";
+      console.log(
+        "You lose! \n Player: " + playerScore + " Computer: " + computerScore
+      );
+      disableButtons();
+    }
+    playing = false;
   }
 }
 
@@ -64,13 +86,27 @@ function reset() {
   playerScore = 0;
   computerScore = 0;
   gamesPlayed = 0;
-  numberOfRounds = 1;
+  numberOfRounds = 3;
+  updateScore();
+  playResult.textContent = "Press a key to start";
+  enableButtons();
 }
 
-function displayScores() {
-  console.log("Current scores:");
-  console.log("Player: " + playerScore);
-  console.log("Computer: " + computerScore);
+function disableButtons() {
+  swordButton.disabled = true;
+  shieldButton.disabled = true;
+  bowButton.disabled = true;
+}
+
+function enableButtons() {
+  swordButton.disabled = false;
+  shieldButton.disabled = false;
+  bowButton.disabled = false;
+}
+
+function updateScore() {
+  computerScoreDisplay.textContent = computerScore;
+  playerScoreDisplay.textContent = playerScore;
 }
 
 function normalizeString(string) {
