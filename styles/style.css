@@ -10,7 +10,7 @@
 
 header {
   width: 100%;
-  color: #e4e1de;
+  color: #f1efed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,6 +71,7 @@ header p {
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -114,15 +115,34 @@ body main {
           flex-direction: row;
 }
 
-body main div div {
-  background-color: #e4e1de;
-}
-
 .gameContent {
   width: 100%;
   height: 60vh;
   min-height: 300px;
-  background: white;
+  text-align: center;
+  color: #f1efed;
+  background: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.gameContent .scoreDisplay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.gameContent .scoreDisplay div {
+  width: 100%;
 }
 
 .buttonHold {
@@ -174,12 +194,37 @@ footer p a svg:hover {
   stroke: gold;
 }
 
+.resetHold {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 5%;
+}
+
+.resetHold .reset {
+  border: 0;
+  -webkit-box-shadow: thistle;
+          box-shadow: thistle;
+  text-align: center;
+  width: 100%;
+  color: white;
+  background: grey;
+  border-radius: 10px;
+}
+
+.resetHold .reset:hover {
+  background: red;
+}
+
+.resetHold .reset:focus {
+  outline: none;
+}
+
 .buttonHover:hover {
   background: transparent;
   background-color: transparent;
   fill: transparent;
-  stroke: red;
-  stroke-width: 10px;
+  stroke: #df0d0d;
+  stroke-width: 7px;
 }
 
 button {
@@ -189,16 +234,6 @@ button {
   border: 0;
   -webkit-box-shadow: thistle;
           box-shadow: thistle;
-}
-
-button img {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-
-button img:hover {
-  background-color: purple;
-  border: tomato;
 }
 
 @media (max-width: 768px) {
@@ -347,15 +382,17 @@ button img:hover {
 }
 
 /* THIS PART IS ANIMATION FOR THE ARROW */
-#arrowLeft {
-  scale: 0.3;
+.arrowLeft {
   background: transparent;
-  bottom: 15%;
+  bottom: 10%;
   position: absolute;
-  rotate: -90deg;
-  -webkit-animation: linear;
+  -webkit-transform: rotate(-90deg) scale(0.3);
+          transform: rotate(-90deg) scale(0.3);
+  -webkit-animation: run linear 2s forwards;
+          animation: run linear 2s forwards;
+  /*-webkit-animation: linear;
   -webkit-animation-name: run;
-  -webkit-animation-duration: 5s;
+  -webkit-animation-duration: 2s;*/
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }

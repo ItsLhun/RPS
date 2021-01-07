@@ -1,7 +1,7 @@
 @import "./breakpoints.scss";
 
 $backgroundColor: rgba(69, 66, 73, 1);
-$mainFontColor: rgb(228, 225, 222);
+$mainFontColor: rgb(241, 239, 237);
 
 @font-face {
   font-family: battleFont;
@@ -56,6 +56,7 @@ header {
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -67,7 +68,6 @@ body {
     @include flexCenter(row);
     div {
       div {
-        background-color: $mainFontColor;
       }
     }
   }
@@ -77,7 +77,17 @@ body {
   width: 100%;
   height: 60vh;
   min-height: 300px;
-  background: white;
+  text-align: center;
+  color: $mainFontColor;
+  background: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  .scoreDisplay {
+    @include flexCenter(row);
+    div {
+      width: 100%;
+    }
+  }
 }
 .buttonHold {
   padding-top: 10px;
@@ -113,14 +123,34 @@ footer {
     }
   }
 }
+.resetHold {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 5%;
+  .reset {
+    border: 0;
+    box-shadow: thistle;
+    text-align: center;
+    width: 100%;
+    color: white;
+    background: grey;
+    border-radius: 10px;
+    &:hover {
+      background: red;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
 
 .buttonHover {
   &:hover {
     background: transparent;
     background-color: transparent;
     fill: transparent;
-    stroke: red;
-    stroke-width: 10px;
+    stroke: rgb(223, 13, 13);
+    stroke-width: 7px;
   }
 }
 
@@ -130,13 +160,6 @@ button {
   background: transparent;
   border: 0;
   box-shadow: thistle;
-  img {
-    transform: scale(1);
-    &:hover {
-      background-color: purple;
-      border: tomato;
-    }
-  }
 }
 
 @include media("<=phone") {
@@ -248,15 +271,15 @@ button {
 }
 
 /* THIS PART IS ANIMATION FOR THE ARROW */
-#arrowLeft {
-  scale: (0.3);
+.arrowLeft {
   background: transparent;
-  bottom: 15%;
+  bottom: 10%;
   position: absolute;
-  rotate: -90deg;
-  -webkit-animation: linear;
+  transform: rotate(-90deg) scale(0.3);
+  animation: run linear 2s forwards;
+  /*-webkit-animation: linear;
   -webkit-animation-name: run;
-  -webkit-animation-duration: 5s;
+  -webkit-animation-duration: 2s;*/
   animation-fill-mode: forwards;
 }
 @-webkit-keyframes run {

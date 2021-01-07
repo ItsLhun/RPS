@@ -1,9 +1,22 @@
 let playerScore = 0;
 let computerScore = 0;
 let gamesPlayed = 0;
-const numberOfRounds = 5;
+let numberOfRounds = 1;
 
-play(computerPlay());
+//play(computerPlay());
+
+const playerScoreDisplay = document.querySelector("#playerScore");
+playerScoreDisplay.textContent = playerScore;
+
+const computerScoreDisplay = document.querySelector("#computerScore");
+computerScoreDisplay.textContent = computerScore;
+
+const resetButton = document.querySelector("reset");
+resetButton.addEventListener("click", reset());
+
+const shieldButton = document.querySelector("#shieldButton");
+const swordButton = document.querySelector("#swordButton");
+const bowButton = document.querySelector("#bowButton");
 
 function computerPlay() {
   let options = ["Rock", "Paper", "Scissors"];
@@ -47,6 +60,13 @@ function play(computerPlay) {
   }
 }
 
+function reset() {
+  playerScore = 0;
+  computerScore = 0;
+  gamesPlayed = 0;
+  numberOfRounds = 1;
+}
+
 function displayScores() {
   console.log("Current scores:");
   console.log("Player: " + playerScore);
@@ -59,4 +79,10 @@ function normalizeString(string) {
 
 function randomNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function sendArrow(num, winner) {
+  const arrowDiv = document.createElement("div");
+
+  arrowDiv.classList.add("");
 }

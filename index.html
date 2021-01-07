@@ -30,13 +30,27 @@
     <main>
       <div>
         <div class="gameContent">
-          <div>THIS IS SOMETHING</div>
-          <div id="arrowLeft"><img src="/imgs/ArrowOnly.svg" alt="" /></div>
+          <div>
+            <h2>SCORE</h2>
+            <div class="scoreDisplay">
+              <div>
+                <label>PC</label>
+                <p id="computerScore">0</p>
+              </div>
+              <div>
+                <label>Player</label>
+                <div><p id="playerScore">"</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="arrowLeft"><img src="/imgs/ArrowOnly.svg" alt="" /></div>
         </div>
+
         <div class="buttonHold">
-          <button>
-            <?xml version="1.0" encoding="iso-8859-1"?>
-            <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+          <div class="resetHold">
+            <button class="reset">RESET</button>
+          </div>
+          <button id="shieldButton">
             <svg
               version="1.1"
               id="Layer_1"
@@ -93,9 +107,7 @@
               <g></g>
             </svg>
           </button>
-          <button>
-            <?xml version="1.0" encoding="iso-8859-1"?>
-            <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+          <button id="swordButton">
             <svg
               version="1.1"
               id="Layer_1"
@@ -183,9 +195,7 @@
               <g></g>
             </svg>
           </button>
-          <button>
-            <?xml version="1.0" encoding="iso-8859-1"?>
-            <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+          <button id="bowButton">
             <svg
               version="1.1"
               id="Layer_1"
@@ -313,5 +323,5 @@
       </p>
     </footer>
   </body>
-  <script src=""></script>
+  <script src="/main.js"></script>
 </html>
