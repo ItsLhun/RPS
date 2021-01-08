@@ -1,12 +1,13 @@
 let playerScore = 0;
 let computerScore = 0;
 let gamesPlayed = 0;
-let numberOfRounds = 3;
+let numberOfRounds = 5;
 let playing = false;
 
 const playerScoreDisplay = document.querySelector("#playerScore");
 
 const computerScoreDisplay = document.querySelector("#computerScore");
+const finalResultDisplay = document.querySelector("#finalResult");
 
 const resetButton = document.querySelector(".reset");
 resetButton.addEventListener("click", (event) => {
@@ -38,8 +39,8 @@ function play(computerPlay, playerPlay) {
   let playerPlayed = playerPlay;
 
   if (playerPlayed === computerPlay) {
-    playResult.textContent = "It's a tie!";
-    console.log("It's a tie!");
+    playResult.textContent =
+      playerPlayed + " vs " + computerPlay + ". It's a tie!";
     updateScore();
   } else if (
     (playerPlayed === "Shield" && computerPlay === "Bow") ||
@@ -47,36 +48,25 @@ function play(computerPlay, playerPlay) {
     (playerPlayed === "Bow" && computerPlay === "Sword")
   ) {
     playResult.textContent =
-      "You win! " + playerPlayed + " beats " + computerPlay + "!";
-    console.log("You win! " + playerPlayed + " beats " + computerPlay + "!");
+      "You win a round!" + playerPlayed + " beats " + computerPlay;
     playerScore++;
     gamesPlayed++;
     updateScore();
   } else {
     playResult.textContent =
-      "You lose! " + computerPlay + " beats " + playerPlayed + "!";
-    console.log("You lose! " + computerPlay + " beats " + playerPlayed + "!");
+      "You lose a round! " + computerPlay + " beats " + playerPlayed;
     computerScore++;
     gamesPlayed++;
     updateScore();
   }
 
   if (gamesPlayed === numberOfRounds) {
-    console.log("And the final score is:");
+    disableButtons();
     if (playerScore === computerScore) {
-      console.log("Tie!");
     } else if (playerScore > computerScore) {
-      playResult.textContent = "Congratulations, you Win!";
-      console.log(
-        "You win! \n Player: " + playerScore + " Computer: " + computerScore
-      );
-      disableButtons();
+      finalResultDisplay.textContent = "Congratulations, you Win!";
     } else {
-      playResult.textContent = "Sorry, you Lose!";
-      console.log(
-        "You lose! \n Player: " + playerScore + " Computer: " + computerScore
-      );
-      disableButtons();
+      finalResultDisplay.textContent = " \n Sorry, you Lose!";
     }
     playing = false;
   }
@@ -86,9 +76,10 @@ function reset() {
   playerScore = 0;
   computerScore = 0;
   gamesPlayed = 0;
-  numberOfRounds = 3;
+  numberOfRounds = 5;
   updateScore();
   playResult.textContent = "Press a key to start";
+  finalResultDisplay.textContent = "";
   enableButtons();
 }
 

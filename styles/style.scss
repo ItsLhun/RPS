@@ -47,13 +47,23 @@ header {
   color: $mainFontColor;
   @include flexCenter(row);
   background: transparent;
-  p {
+  h1 {
     @include flexCenter(row);
     font-family: battleFont, monospace;
     font-size: 12vmin;
     height: 100%;
   }
   max-height: 15%;
+}
+
+h3 {
+  text-align: center;
+  color: $mainFontColor;
+  font-family: battleFont, monospace;
+  font-size: 6vmin;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .mainHeadWrapper {
@@ -76,8 +86,6 @@ body {
     height: auto;
     @include flexCenter(row);
     div {
-      div {
-      }
     }
   }
 }
@@ -90,7 +98,7 @@ body {
   color: $mainFontColor;
   background: transparent;
   font-family: "Amatic SC", cursive;
-  font-size: 3.1vh;
+  font-size: 2.9vh;
   .scoreDisplay {
     @include flexCenter(row);
 
@@ -102,6 +110,7 @@ body {
 .buttonHold {
   padding-top: 10px;
   background: transparent;
+  width: 100%;
 }
 
 footer {
